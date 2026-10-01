@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05070b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="МАТВЕЙ">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="style.css"><title>МАТВЕЙ</title>
+</head>
+<body>
+<div id="app">
+  <div id="splash" class="splash-screen" aria-label="Загрузка приложения">
+    <div class="splash-logo" aria-hidden="true"><span>ГОС</span><span>УСЛУГИ</span></div>
+    <div class="splash-spinner" aria-hidden="true"></div>
+  </div>
+  <main id="login" class="login-screen">
+    <div class="profile"><div class="avatar">◎</div><h1>МАТВЕЙ</h1></div>
+    <section class="lock"><h2>Введите код</h2><div class="dots" id="dots"><span></span><span></span><span></span><span></span></div>
+      <div class="keypad">
+        <button class="number" data-key="1">1</button><button class="number" data-key="2">2</button><button class="number" data-key="3">3</button>
+        <button class="number" data-key="4">4</button><button class="number" data-key="5">5</button><button class="number" data-key="6">6</button>
+        <button class="number" data-key="7">7</button><button class="number" data-key="8">8</button><button class="number" data-key="9">9</button>
+        <button class="exit" id="exitBtn">Выйти</button><button class="number" data-key="0">0</button><button class="face-id" id="faceIdBtn">◉</button>
+      </div><p id="message" class="message"></p>
+    </section>
+  </main>
+
+  <main id="home" class="app-screen hidden">
+    <header class="topbar"><div class="user">◯ <b>МАТВЕЙ</b> ›</div><div class="top-icons">⌕　♧　▣</div></header>
+    <div class="chips"><span>Поступление в колледж</span><span>Водительские права</span><span>Поступление</span></div>
+    <div class="tiles">
+      <button data-loading="1"><b>Доступ<br>к важным<br>сайтам</b><small>🌐</small></button>
+      <button data-loading="1"><b>Защита близких<br>от взлома</b><small>🛡️</small></button>
+      <button data-loading="1"><b>Оформите<br>налоговый<br>вычет</b><small>₽</small></button>
+      <button data-loading="1"><b>Оформление<br>аренды</b><small>▣</small></button>
+    </div>
+    <section class="salary"><b>Нет начислений</b><span>уточните данные</span></section>
+    <section class="panel"><h2>Документы для предъявления</h2><div class="doc-shortcuts">
+      <button data-doc="passport"><i class="red">◈</i><span>Паспорт</span></button>
+      <button data-doc="oms"><i class="blue">＋</i><span>Полис ОМС</span></button>
+      <button data-doc="snils"><i class="green">⬟</i><span>СНИЛС</span></button>
+      <button id="allDocs"><i class="all">▣</i><span>Все</span></button>
+    </div></section>
+    <button class="personal-docs-button" id="personalDocs">
+      <span class="personal-docs-icon">▣</span>
+      <span><b>Личные документы</b><small>Паспорт, СНИЛС, ИНН и другие</small></span>
+      <span class="personal-docs-arrow">›</span>
+    </button>
+    <section class="panel services"><h2>Сервисы и приложения</h2><div class="services-grid"><button data-loading="1">♡<span>Здоровье</span></button><button data-loading="1">⌁<span>Авто</span></button><button data-loading="1">🔑<span>Госключ</span></button><button data-loading="1">◫<span>Другие</span></button></div></section>
+    <nav class="bottom"><button class="active">⌂<span>главная</span></button><button data-loading="1">▦<span>услуги</span></button><button>◉</button><button data-loading="1">▢<span>платежи</span></button><button id="documentsTab">▤<span>документы</span></button></nav>
+  </main>
+
+  <main id="docs" class="docs-screen hidden">
+    <header class="docs-header"><button class="back" data-back>‹</button><div><h1>Личные документы</h1><span>Ваши документы</span></div><button class="menu">⋮</button></header>
+    <div class="demo-note">ДЕМО • НЕ ЯВЛЯЕТСЯ ГОСУДАРСТВЕННЫМ ДОКУМЕНТОМ</div>
+    <div id="docList" class="doc-list"></div>
+  </main>
+
+  <main id="docDetail" class="detail-screen hidden">
+    <header class="detail-header"><button class="back" data-back>‹</button><h1 id="detailTitle">Паспорт РФ</h1><button>⇧</button></header>
+    <div id="detailCard"></div>
+    <div class="demo-watermark">ДЕМО</div>
+    <button class="present" data-loading="1">▣　Предъявить</button>
+  </main>
+
+  <main id="admin" class="admin-screen hidden">
+    <header class="admin-header"><button class="back" data-back>‹</button><h1>Редактирование</h1></header>
+    <div class="admin-warning">ДЕМО-РЕЖИМ — данные предназначены только для прототипа и не создают действительные документы.</div>
+    <form id="adminForm">
+      <label>Имя<input name="firstName" required></label><label>Фамилия<input name="lastName" required></label><label>Дата рождения<input name="birth" placeholder="10.08.2009"></label>
+      <h2>Номера документов</h2>
+      <label>Паспорт<input name="passport" required></label><label>Полис ОМС<input name="oms" required></label><label>СНИЛС<input name="snils" required></label><label>ИНН<input name="inn"></label><label>Загранпаспорт<input name="foreign"></label>
+      <button class="save" type="submit">Сохранить</button>
+    </form>
+  </main>
+
+  <div id="loading" class="loading hidden"><div><b>Идёт загрузка...</b><button id="closeLoading">закрыть</button></div></div>
+</div>
+<script src="app.js"></script>
+</body></html>
